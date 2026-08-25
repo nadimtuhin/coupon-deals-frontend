@@ -1,0 +1,20 @@
+{
+  "name": "coupon-deals-frontend",
+  "version": "1.0.0",
+  "description": "Modular Handlebars + SCSS + TypeScript UI components for high-converting affiliate coupon & deal platforms",
+  "type": "module",
+  "scripts": {
+    "build:sass": "bun run build-css.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/handlebars": "^4.1.0",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.4"
+  }
+}

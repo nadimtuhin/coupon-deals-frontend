@@ -1,0 +1,180 @@
+// Variables & Mixins
+$primary: #059669;
+$primary-hover: #047857;
+$accent: #f59e0b;
+$dark: #0f172a;
+$card-border: #e2e8f0;
+$text-main: #1e293b;
+$text-muted: #64748b;
+$radius: 10px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 640px) { @content; }
+  }
+}
+
+// Global & Base
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coupon-card {
+  background: #ffffff;
+  border: 1px solid $card-border;
+  border-radius: $radius;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  }
+
+  &__badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__discount {
+    background: rgba($primary, 0.1);
+    color: $primary;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+
+  &__verified {
+    color: $primary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-main;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed $card-border;
+    padding-top: 14px;
+    margin-top: auto;
+  }
+
+  &__expiry {
+    font-size: 12px;
+    color: $text-muted;
+  }
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+
+  &--copy {
+    background: $primary;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  &--deal {
+    background: #f1f5f9;
+    color: $dark;
+
+    &:hover {
+      background: #e2e8f0;
+    }
+  }
+}
+
+// Modal Dialog
+.coupon-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+  }
+
+  &__content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: $text-muted;
+    cursor: pointer;
+  }
+
+  &__code-box {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+
+    input {
+      flex: 1;
+      border: 2px dashed $primary;
+      background: rgba($primary, 0.04);
+      padding: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 1px;
+      border-radius: 6px;
+    }
+  }
+}
